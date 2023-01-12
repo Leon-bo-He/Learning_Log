@@ -2,18 +2,27 @@
 
 {% block content %}
 
-<p>Topics: {{ topic }}</p>
+<p>Topic: {{ topic }}</p>
 <p>Entries:</p>
-
+<p>
+    <a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
+</p>
+ 
 <ul>
 {% for entry in entries %}
 <li>
     <p>{{ entry.date_added  }}</p>
     <p>{{ entry.text }}</p>
+    
+    <p>
+        <a href="{% url 'learning_logs:edit_entry' entry.id %}">Edit entry</a>
+    </p>
 </li>
 {% empty %}
 <li>There is no entries for this topic yet.</li>
 {% endfor %}
 </ul>
+
+
 {% endblock content %}
 
