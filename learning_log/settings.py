@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     'learning_logs',
     'users',
 
+    # third party apps
+    'bootstrap4',
+
     # load admin after users
     'django.contrib.admin',
     'django.contrib.auth',
