@@ -3,7 +3,7 @@
 {% block page_header %}
 <h3>
     {{ topic }}
-    <small><a href="{% url 'learning_logs:topics' %}">Back To Topics</a><small>
+    <small><small><small><a href="{% url 'learning_logs:topics' %}">Back To Topics</a></small></small></small>
 </h3>
 {% endblock page_header %}
 
@@ -19,11 +19,15 @@
 <div class="card mb-3">
     <h4 class="card-header">
         {{ entry.date_added|date:'M d, Y H:i' }} 
-        <small><a href="{% url 'learning_logs:edit_entry' entry.id %}">edit entry</a></small>
     </h4>
 
     <div class="card-body">
         <font size="+1">{{ entry.text|linebreaks }}</font>
+
+        <ul class="navbar-nav">
+            <li><a href="{% url 'learning_logs:edit_entry' entry.id %}">Edit</a></li>
+            <li><a href="{% url 'learning_logs:delete_entry' entry.id %}">Delete</a></li>
+        </ul>
     </div>
 </div>
 
@@ -32,5 +36,6 @@
 {% endfor %}
 </ul>
 
+<h4><a href="{% url 'learning_logs:delete_topic' topic.id %}">Delete This Topic</a></h4>
 {% endblock content %}
 

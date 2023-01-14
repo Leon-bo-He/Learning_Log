@@ -1,0 +1,23 @@
+{% extends "learning_logs/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+<h3>Delete Topic: {{  topic }} </h3>
+{% endblock page_header %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <p class="lead">
+        <form action="{% url 'learning_logs:delete_topic' topic.id %}" method="post">
+            <p><h3>Are you sure you want to delete this topic? All information will be permanently removed.</h3></p>
+            {% csrf_token %}
+            {% buttons %}
+            <button name="submit" class="btn btn-primary">DETELE</button>
+            <a href="{% url 'learning_logs:topic' topic.id %}" class="btn btn-primary">CANCEL</a>
+            {% endbuttons %}
+        </form>
+    </p>
+</div>
+
+{% endblock content %}
